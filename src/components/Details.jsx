@@ -33,10 +33,10 @@ const Details = ({ data, set }) => {
         event.preventDefault();
         // Do something with name and email values, e.g. submit to server
         const bookingData = {
-          name,
-          email,
-          date,
-          time,
+            name,
+            email,
+            date,
+            time,
         };
         localStorage.setItem('bookingData', JSON.stringify(bookingData));
         alert('Booking Successful!');
@@ -62,76 +62,73 @@ const Details = ({ data, set }) => {
     const summary = data.summary.replace(/<[^>]*>/g, '');
 
     return (
-        <div className="fixed inset-0 z-20 bg-black bg-opacity-25 backdrop-blur-sm flex-col flex justify-center items-center">
-            <div className='flex justify-center w-[850px] items-center h-[400px]'>
-                <div className="flex bg-white flex-row">
-                    <img src={data.image?.original} alt="" className='w-[300px] ' />
-                    <div className='m-5'>
-                        <h2 className='font-[800] text-5xl mb-5'>{data.name}</h2>
+        <div className="fixed inset-0 z-20 bg-black overflow-y-auto bg-opacity-25 backdrop-blur-sm flex-col flex justify-center items-center">
+            <div className='w-full max-w-md'>
+                <div className="bg-white p-4 max-h-full rounded-md shadow-md">
+                    <img src={data.image?.original} alt="" className='w-full rounded-md' />
+                    <div className='p-4'>
+                        <h2 className='font-bold text-3xl mb-4'>{data.name}</h2>
                         <div>
                             {isBooking ? (
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-                                    <div className='flex gap-5'>
-                                        <div className="flex flex-col gap-1">
-                                            <label htmlFor="name" className="font-bold text-lg">
-                                                Name
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                value={name}
-                                                onChange={handleNameChange}
-                                                className="border-2 border-gray-300 p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                required
-                                            />
-
-                                            <label htmlFor="date" className='font-bold text-lg'>Date</label>
-                                            <input
-                                                type="date"
-                                                id="name"
-                                                value={date}
-                                                onChange={handleDateChange}
-                                                className="border-2 border-gray-300 p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                required
-                                            />
-                                        </div>
-                                        <div className="flex flex-col gap-1">
-                                            <label htmlFor="email" className="font-bold text-lg">
-                                                Email
-                                            </label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                value={email}
-                                                onChange={handleEmailChange}
-                                                className="border-2 border-gray-300 p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                required
-                                            />
-                                            <label htmlFor="time" className='font-bold text-lg'>Time</label>
-                                            <select value={time} onChange={handleTimeChange} className="p-1">
-                                                <option value="">Select a show time</option>
-                                                <option value="9am">9 am</option>
-                                                <option value="12pm">12 pm</option>
-                                                <option value="3pm">3 pm</option>
-                                                <option value="6pm">6 pm</option>
-                                                <option value="9pm">9 pm</option>
-                                            </select>
-                                        </div>
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                    <div className='flex flex-col gap-4'>
+                                        <label htmlFor="name" className="font-bold text-lg">
+                                            Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            value={name}
+                                            onChange={handleNameChange}
+                                            className="border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                        <label htmlFor="email" className="font-bold text-lg">
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                            className="border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                        <label htmlFor="date" className='font-bold text-lg'>Date</label>
+                                        <input
+                                            type="date"
+                                            id="name"
+                                            value={date}
+                                            onChange={handleDateChange}
+                                            className="border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                        <label htmlFor="time" className='font-bold text-lg'>Time</label>
+                                        <select value={time} onChange={handleTimeChange} className="border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="">Select a show time</option>
+                                            <option value="9am">9 am</option>
+                                            <option value="12pm">12 pm</option>
+                                            <option value="3pm">3 pm</option>
+                                            <option value="6pm">6 pm</option>
+                                            <option value="9pm">9 pm</option>
+                                        </select>
                                     </div>
-                                    <button
-                                        type="submit"
-                                        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    >
-                                        Submit
-                                    </button>
+                                    <div className='flex gap-4 mt-4'>
+                                        <button
+                                            type="submit"
+                                            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                                        >
+                                            Submit
+                                        </button>
 
-                                    <button
-                                        type="button"
-                                        className=" text-slate-600 py-2 px-4 rounded-md hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        onClick={handleCancel}
-                                    >
-                                        Cancel
-                                    </button>
+                                        <button
+                                            type="button"
+                                            className="bg-gray-200 text-gray-600 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                                            onClick={handleCancel}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
                                 </form>
                             ) :
                                 <div>
