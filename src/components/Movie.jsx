@@ -1,20 +1,21 @@
 
 
 const Movie = ({ data, set }) => {
+
+
     return (
         data.map((movie) => {
             const show = movie.show;
             const { name, genres, summary, rating, image } = show;
             return (
-                <div key={show.id} onClick={() => set(show)} className=" product flex flex-col w-[200px]  items-center cursor-pointer hover:shadow-2xl hover:translate-x-2 hover:shadow-slate-400 mb-2 duration-500">
-                    <div className="flex flex-col items-center ">
-                        <div className="w-[200px]">
-                            <img src={image?.medium} alt={name} />
-                        </div>
-                        <div className="flex flex-col items-center border-2 border-solid border-t-0 w-[200px] border-gray-300">
-                            <p className="text-xl font-semibold">{name}</p>
-                            <p className="text-sm text-gray-500">{genres.join(', ')}</p>
-                            <p className="text-sm text-gray-500">Rating: {rating.average}</p>
+                <div key={show.id} onClick={() => set(show)} className="product flex flex-col m-5 items-center cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
+                    <div className="relative ">
+                        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 hover:opacity-10 z-10"></div>
+                        <img src={image?.medium} alt={name} className="w-[200px] h-[250px] object-cover z-20" />
+                        <div className="absolute bottom-0 left-0 p-2 z-30">
+                            <p className="text-white font-bold text-lg">{name}</p>
+                            <p className="text-white text-sm">{genres.join(', ')}</p>
+                            <p className="text-white text-sm">Rating: {rating.average}</p>
                         </div>
                     </div>
                 </div>
